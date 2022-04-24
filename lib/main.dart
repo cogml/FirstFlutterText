@@ -187,20 +187,27 @@ class Grade extends StatelessWidget {
               ),
               SizedBox(height: 50.0),
               Builder(builder: (BuildContext ctx) {
-                  return Center(
-                    //snackbar만들기
-                    child: FlatButton(
-                      onPressed: () {
-                        Scaffold.of(ctx).showSnackBar(SnackBar(
-                          content: Text('snack bar'),
-                        ));
-                      },
-                      child: Text('show me'),
-                      color: Colors.amber,
-                    ),
-                  );
-                }
-              )
+                return Center(
+                  //snackbar만들기
+                  child: FlatButton(
+                    onPressed: () {
+                      Scaffold.of(ctx).showSnackBar(SnackBar(
+                        content: Text(
+                          'snack bar',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                        ),
+                        backgroundColor: Color(0xffc39403),
+                        duration: Duration(milliseconds: 1000),
+                      ));
+                    },
+                    child: Text('show me'),
+                    color: Colors.amber,
+                  ),
+                );
+              }),
+              MySnackBar()
             ],
           ),
         ));
@@ -214,4 +221,17 @@ class Body extends StatelessWidget {
       child: Text('Bottom'),
     );
   }
+}
+
+class MySnackBar extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: IconButton(onPressed: () {
+        Scaffold.of(context).showSnackBar(SnackBar(content: Text('snack bar 2'),));
+      }, icon: Icon(Icons.star),
+      ),
+    );
+  }
+
 }
